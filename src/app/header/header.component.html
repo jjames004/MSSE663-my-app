@@ -1,0 +1,19 @@
+
+<div class="logo-container">
+    <img [src]="logoSrc" [alt]="logoAltText" width="100">
+    <!-- one directional property binding -->
+
+    <div *ngFor="let nav of navs">
+        <a>{{ nav }}</a>
+    </div>
+</div><!-- end logo-container -->
+
+<div class="hero-container">
+    <img [src]="heroSrc" [alt]="heroAltText" width="100%">
+    <div class="hero-subtitle">{{ subtitle }}</div>
+    <h1 class="hero-title">{{ title }}</h1>
+</div>
+
+<div *ngIf="isAuth">Welcome back {{ username }}</div>
+
+<hr>
