@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
   heroSrc = 'http://via.placeholder.com/1200x400/F0F0F0/FFFFFF/?text=header+image';
   heroAltText = 'hero image';
 
-  @Input() isAuth: boolean; // for *ngIf
 
 
   // variables defined in HomeComponent
@@ -23,13 +22,9 @@ export class HeaderComponent implements OnInit {
   @Input() subtitle: string;
   @Input() username: string;
 
-  @Output() arrived: EventEmitter<string> = new EventEmitter<string>();
-
   constructor() { }
 
   ngOnInit(): void {
-    this.arrived.emit('Your featured items:');
   }
 
-  navs: string[] = ['home', 'products', 'about', 'account']
 }

@@ -1,20 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+﻿import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+import { User } from '@app/_models';
+import { AccountService } from '@app/_services';
+
+@Component({ 
+    templateUrl: 'home.component.html', 
+    styleUrls: ['./home.component.scss'] 
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+    user: User;
 
-  isAuth: boolean; // for *ngIf
+    
 
-  // displayed in header with @Input() and one-directional binding
-  title = "Baked With Love";
-  subtitle = "Gluten Free, Flavor Full"
-  username = "Home User";
 
-  cupcakePrice = '4.95';
+    cupcakePrice = '4.95';
 
   cupcakes = [
     {
@@ -69,25 +68,7 @@ export class HomeComponent implements OnInit {
   popup = false
   name = 'Angular';
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.isAuth = true; // for *ngIf
-  }
-
-
-  // 'Your Featured Items' string
-  arrived: string;
-
-  hasArrived(event: string) {
-    this.arrived = event;
-  }
-
-  phone = '303.721.7547';
-  email = 'info@wavethegrain.com';
-
-  copyright = '©2020, WavetheGRAIN';
-
-
-
+    constructor(private accountService: AccountService) {
+        this.user = this.accountService.userValue;
+    }
 }
